@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Esercitazione_2._1.Models
 {
-    public class LatLong
+    public class MonitoredLocation
     {
+        public int Id { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
+        public double Degradation { get; set; }
     }
 }

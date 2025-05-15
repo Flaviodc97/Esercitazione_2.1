@@ -17,7 +17,7 @@ namespace Esercitazione_2._1.Models
         public int MaxId { get; set; }
         public double MaxValore { get; set; }
         public string Lunghezza { get; set; }
-        //public string DistanzaLineare { get; set; }
+        public string DistanzaLineare { get; set; }
 
         public override string ToString()
         {
@@ -25,7 +25,7 @@ namespace Esercitazione_2._1.Models
            $"\"LatInizio\": \"{LatInizio}\", \n\"LonInizio\": \"{LonInizio}\", \n" +
            $"\"LatFine\": \"{LatFine}\", \n\"LonFine\": \"{LonFine}\" \n" +
            $"\"MaxId\": \"{MaxId}\",\n \"MaxValore\": \"{MaxValore}\" \n" +
-           $"\"Lunghezza\": \"{Lunghezza}\",\n \"Distanza\": \"{null}\" \n}}";
+           $"\"Lunghezza\": \"{Lunghezza}\",\n \"Distanza\": \"{DistanzaLineare}\" \n}}";
 
         }
     }
