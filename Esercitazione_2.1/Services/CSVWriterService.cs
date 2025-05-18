@@ -31,7 +31,22 @@ namespace Esercitazione_2._1.Services
                     );
             }
 
-            File.WriteAllText(path, sb.ToString(), Encoding.UTF8);
+            try
+            {
+                File.WriteAllText(path, sb.ToString(), Encoding.UTF8);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"IO error while writing to file: {ex.Message}");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Console.WriteLine($"Access denied to file path: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error during CSV writing: {ex.Message}");
+            }
         }
     }
 }

@@ -216,11 +216,11 @@ var assemblies = [
       { "name": "Esercitazione_2._1.Models.Anomaly", "rp": "Esercitazione_2.1_Anomaly.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Models.Coordinate", "rp": "Esercitazione_2.1_Coordinate.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Models.MonitoredLocation", "rp": "Esercitazione_2.1_MonitoredLocation.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Esercitazione_2._1.Services.AnomalyDetectionService", "rp": "Esercitazione_2.1_AnomalyDetectionService.html", "cl": 175, "ucl": 0, "cal": 175, "tl": 386, "cb": 48, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Esercitazione_2._1.Services.AnomalyDetectionService", "rp": "Esercitazione_2.1_AnomalyDetectionService.html", "cl": 398, "ucl": 0, "cal": 398, "tl": 419, "cb": 242, "tb": 288, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.CsvReaderService", "rp": "Esercitazione_2.1_CsvReaderService.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 53, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.CSVWriterService", "rp": "Esercitazione_2.1_CSVWriterService.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 37, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.GeoService", "rp": "Esercitazione_2.1_GeoService.html", "cl": 22, "ucl": 3, "cal": 25, "tl": 49, "cb": 6, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Program", "rp": "Esercitazione_2.1_Program.html", "cl": 0, "ucl": 12, "cal": 12, "tl": 76, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "Esercitazione_2.1_Program.html", "cl": 0, "ucl": 50, "cal": 50, "tl": 76, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -241,6 +241,24 @@ var riskHotspots = [
       { "value": 10, "exceeded": false },
     ]},
   {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaliesWithNASupport(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaliesWithNASupport(...)", "fileIndex": 0, "line": 226,
+    "metrics": [
+      { "value": 60, "exceeded": true },
+      { "value": 60, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaliesWithNASupport(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaliesWithNASupport(...)", "fileIndex": 0, "line": 214,
+    "metrics": [
+      { "value": 54, "exceeded": true },
+      { "value": 52, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaly(...)", "fileIndex": 0, "line": 110,
+    "metrics": [
+      { "value": 28, "exceeded": false },
+      { "value": 28, "exceeded": true },
+    ]},
+  {
     "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaly(...)", "fileIndex": 0, "line": 109,
     "metrics": [
       { "value": 28, "exceeded": false },
@@ -251,6 +269,18 @@ var riskHotspots = [
     "metrics": [
       { "value": 26, "exceeded": false },
       { "value": 26, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaly(...)", "fileIndex": 0, "line": 118,
+    "metrics": [
+      { "value": 26, "exceeded": false },
+      { "value": 26, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomaly(...)", "fileIndex": 0, "line": 15,
+    "metrics": [
+      { "value": 24, "exceeded": false },
+      { "value": 24, "exceeded": true },
     ]},
 ];
 

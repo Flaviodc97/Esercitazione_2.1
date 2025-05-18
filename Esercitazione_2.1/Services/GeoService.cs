@@ -32,9 +32,10 @@ namespace Esercitazione_2._1.Services
         }
         public static double DistanceCalculation(double lat1, double lon1, double lat2, double lon2)
         {
-            double R = 6371000; // Raggio della Terra in metri
+            //Earth's radius in meters
+            double R = 6371000;
 
-            // Converti in radianti
+            //Convert to radians
             double φ1 = lat1 * Math.PI / 180.0;
             double φ2 = lat2 * Math.PI / 180.0;
             double λ1 = lon1 * Math.PI / 180.0;
