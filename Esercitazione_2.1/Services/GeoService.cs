@@ -30,21 +30,22 @@ namespace Esercitazione_2._1.Services
 
             return decimalDegrees;
         }
-        public static double DistanceCalculation(double lat1, double lon1, double lat2, double lon2)
+        public static double DistanceCalculation(double latitude1, double longitude1, double latitude2, double longitude2)
         {
             //Earth's radius in meters
-            double R = 6371000;
+            double earthRadius = 6371000;
 
             //Convert to radians
-            double φ1 = lat1 * Math.PI / 180.0;
-            double φ2 = lat2 * Math.PI / 180.0;
-            double λ1 = lon1 * Math.PI / 180.0;
-            double λ2 = lon2 * Math.PI / 180.0;
+            double latRad1 = latitude1 * Math.PI / 180.0;
+            double latRad2 = latitude2 * Math.PI / 180.0;
+            double lonRad1 = longitude1 * Math.PI / 180.0;
+            double lonRad2 = longitude2 * Math.PI / 180.0;
 
-            double x = (λ2 - λ1) * Math.Cos((φ1 + φ2) / 2);
-            double y = φ2 - φ1;
+            //Calculate differences
+            double deltaX = (lonRad2 - lonRad1) * Math.Cos((latRad1 + latRad2) / 2);
+            double deltaY = latRad2 - latRad1;
 
-            return Math.Sqrt(x * x + y * y) * R;
+            return Math.Sqrt(deltaX * deltaX + deltaY * deltaY) * earthRadius;
         }
     }
 }

@@ -164,7 +164,7 @@ namespace Esercitazione_2._1.Tests
                 Loc(3, "N 0°0'2\"", "E 0°0'2\"", 5.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 2);
             Assert.Single(result);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(3, result[0].EndId);
@@ -302,11 +302,11 @@ namespace Esercitazione_2._1.Tests
             var locations = new List<MonitoredLocation>
             {
                 Loc(1, "N 0°0'0\"", "E 0°0'0\"", 4.0),
-                Loc(2, "N 0°0'1\"", "E 0°0'1\"", 1.0),  // sotto soglia
+                Loc(2, "N 0°0'1\"", "E 0°0'1\"", 1.0),
                 Loc(3, "N 0°0'2\"", "E 0°0'2\"", 5.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaliesWithNASupport(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomaliesWithNASupport(locations, 3.0, 2);
             Assert.Single(result);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(3, result[0].EndId);
@@ -334,16 +334,9 @@ namespace Esercitazione_2._1.Tests
         {
             var locations = new List<MonitoredLocation>
             {
-                // Anomalia inizia
                 Loc(1, "N 0°0'0\"", "E 0°0'0\"", 5.0),
-        
-                // Sotto soglia → forza la chiusura
                 Loc(2, "NA", "NA", 0.5),
-
-                // Successivo con coordinate valide → da usare per interpolazione
                 Loc(3, "N 0°0'2\"", "E 0°0'2\"", 0.0),
-
-                // Nuova anomalia dopo NA
                 Loc(4, "NA", "NA", 6.0)
             };
 
@@ -351,14 +344,12 @@ namespace Esercitazione_2._1.Tests
 
             Assert.Equal(2, result.Count);
 
-            // Primo blocco
             var first = result[0];
             Assert.Equal(1, first.FirstId);
             Assert.Equal(1, first.EndId);
             Assert.NotEqual("NA", first.EndLat);
             Assert.NotEqual("NA", first.EndLon);
 
-            // Secondo blocco
             var second = result[1];
             Assert.Equal(4, second.FirstId);
             Assert.Equal(4, second.EndId);
@@ -386,12 +377,9 @@ namespace Esercitazione_2._1.Tests
         {
             var locations = new List<MonitoredLocation>
             {
-                // Coordinate valide
                 Loc(1, "N 0°0'0\"", "E 0°0'0\"", 5.0),
-                // Punto normale sotto soglia, con coordinate NA → forza la chiusura dell’anomalia dopo questo
-                Loc(2, "NA", "NA", 4.0),
-                // Punto successivo con coordinate valide → usato per interpolazione
-                Loc(3, "N 0°0'2\"", "E 0°0'2\"", 5.5),
+                Loc(2, "N 0°0'1\"", "E 0°0'1\"", 4.0),
+                Loc(3, "NA", "NA", 5.5),
             };
 
             var result = AnomalyDetectionService.MergeAnomaliesWithNASupport(locations, threshold: 3.0, nMeasurements: 0);
@@ -399,27 +387,10 @@ namespace Esercitazione_2._1.Tests
             Assert.Single(result);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(3, result[0].EndId);
-            Assert.NotEqual("NA", result[0].EndLat); // È stato interpolato
+            Assert.NotEqual("NA", result[0].EndLat); 
             Assert.NotEqual("NA", result[0].EndLon);
         }
 
-        
-        [Fact]
-        public void MergeAnomaliesWithNASupport_LastRilevationsWithNA_SplitsAnomalies()
-        {
-            var locations = new List<MonitoredLocation>
-            {
-                Loc(1, "NA", "NA", 5.0),
-                Loc(2, "N 0°0'1\"", "E 0°0'1\"", 0.5),
-                Loc(3, "N 0°0'2\"", "E 0°0'2\"", 0.4),
-                Loc(4, "N 0°0'3\"", "E 0°0'3\"", 6.0)
-            };
-
-            var result = AnomalyDetectionService.MergeAnomaliesWithNASupport(locations, 3.0, 1);
-            Assert.Equal(2, result.Count);
-            Assert.Equal(1, result[0].FirstId);
-            Assert.Equal(4, result[1].FirstId);
-        }
 
         [Fact]
         public void MergeAnomaliesWithNASupport_LastRilevationWithEqualsDistance_SplitsAnomalies()

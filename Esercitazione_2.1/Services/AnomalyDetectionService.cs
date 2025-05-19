@@ -93,6 +93,7 @@ namespace Esercitazione_2._1.Services
             // Handle the end of the measurements list
             if (firstId != 0)
             {
+
                 //Last measurement
                 var fine = measurements[^1];
                 var distanza = GeoService.DistanceCalculation(GeoService.DMSToDecimal(startLat), GeoService.DMSToDecimal(startLon), GeoService.DMSToDecimal(fine.Latitude), GeoService.DMSToDecimal(fine.Longitude));
@@ -119,7 +120,7 @@ namespace Esercitazione_2._1.Services
             int firstId = 0, maxId = 0;
             double maxDeg = 0, length = 0;
             int nDeg = 0;
-            int nNormalMeasurements = 0;   //Numero di misurazioni con Degradazione < Threshold 
+            int nNormalMeasurements = 0;   
             string startLat = null, startLon = null;
             List<Coordinate> listDif = new List<Coordinate>();
             var anomalies = new List<Anomaly>();
@@ -164,7 +165,7 @@ namespace Esercitazione_2._1.Services
                     {
                         nNormalMeasurements++;
                         //Check if the number of "normal" measurements exceeds the allowed threshold
-                        if (nNormalMeasurements > nMeasurements)
+                        if (nNormalMeasurements >= nMeasurements || i == (measurements.Count -1))
                         {
                             var lastRilevation = measurements[i - nNormalMeasurements];
                             var distanza = GeoService.DistanceCalculation(GeoService.DMSToDecimal(startLat), GeoService.DMSToDecimal(startLon), GeoService.DMSToDecimal(lastRilevation.Latitude), GeoService.DMSToDecimal(lastRilevation.Longitude));
@@ -289,8 +290,8 @@ namespace Esercitazione_2._1.Services
                     {
                         nNormalMeasurements++;
 
-                        //Close anomaly if the number of normal values exceeds the tolerance
-                        if (nNormalMeasurements > nMeasurements)
+                        //Close anomaly if the number of normal values exceeds the tolerance or is the last in the list
+                        if (nNormalMeasurements >= nMeasurements || i == (measurements.Count - 1))
                         {
                             var lastRilevation = measurements[i - nNormalMeasurements];
                             string latitude = lastRilevation.Latitude;
@@ -305,7 +306,7 @@ namespace Esercitazione_2._1.Services
                                     index = ~index; 
                                 //If index < validId List assign index if is over then use the last one on the list
                                 int nextIndex = (index < validId.Count) ? index : validId.Count - 1;
-                                //if index > 0 assign the previos index, if index == 0 assign 0
+                                //When index > 0 assign the previos index, if index == 0 assign 0
                                 int prevIndex = (index > 0) ? index - 1 : 0;
                                 // ValidId List start from 0 CSV File start from 1
                                 var next = validId[nextIndex] -1;
@@ -359,7 +360,7 @@ namespace Esercitazione_2._1.Services
 
             if (firstId != 0)
             {
-                
+
                 var fine = measurements[^1];
                 string latitude = fine.Latitude;
                 string longitude = fine.Longitude;
@@ -375,7 +376,7 @@ namespace Esercitazione_2._1.Services
 
                         int index = validId.BinarySearch(fine.Id);
                         if (index < 0)
-                            index = ~index; 
+                            index = ~index;
                         int nextIndex = (index < validId.Count) ? index : validId.Count - 1;
                         int prevIndex = (index > 0) ? index - 1 : 0;
                         var next = validId[nextIndex] - 1;
@@ -395,7 +396,7 @@ namespace Esercitazione_2._1.Services
                         }
 
                     }
-                    
+
                 }
                 var distanza = GeoService.DistanceCalculation(GeoService.DMSToDecimal(startLat), GeoService.DMSToDecimal(startLon), GeoService.DMSToDecimal(latitude), GeoService.DMSToDecimal(longitude));
                 var anomalia = new Anomaly

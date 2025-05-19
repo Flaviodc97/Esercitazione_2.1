@@ -11,18 +11,18 @@ public class Program
 
     public static void Main()
     {
-        string inputFilePath = Path.Combine(AppContext.BaseDirectory, "example.csv");
-        string outputFilePath = Path.Combine(AppContext.BaseDirectory, "anomalie.csv");
+        string inputFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src\\example.csv");
+        string outputFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src\\anomalie.csv");
         double threshold;
         int nMeasurement;
         bool flag = true;
 
         while (flag == true)
         {   
-            Console.WriteLine("\nSelect method:");
-            Console.WriteLine("1 - FindAnomaly");
-            Console.WriteLine("2 - MergeAnomaly");
-            Console.WriteLine("3 - MergeAnomaliesWithNASupport");
+            Console.WriteLine("Select method:");
+            Console.WriteLine("1 - FindAnomaly - Es1");
+            Console.WriteLine("2 - MergeAnomaly - Es2");
+            Console.WriteLine("3 - MergeAnomaliesWithNASupport -Es4");
             Console.WriteLine("Any Other Key - Quit");
             Console.Write("Choice (1/2/3): ");
 
@@ -44,6 +44,8 @@ public class Program
                 {
                     case "1":
                         anomalies = AnomalyDetectionService.FindAnomaly(rilevazioni, threshold);
+                        CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es1.csv"));
+                        Console.WriteLine($"Anomalies written.");
                         break;
                     case "2":
                         Console.WriteLine("Insert a Merge tolerance value");
@@ -52,6 +54,8 @@ public class Program
                             Console.Write("Not a valid integer. Retry: ");
                         }
                         anomalies = AnomalyDetectionService.MergeAnomaly(rilevazioni, threshold, nMeasurement);
+                        CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es2.csv"));
+                        Console.WriteLine($"Anomalies written.");
                         break;
                     case "3":
                         Console.WriteLine("Insert a Merge tolerance value");
@@ -60,11 +64,12 @@ public class Program
                             Console.Write("Not a valid integer. Retry: ");
                         }
                         anomalies = AnomalyDetectionService.MergeAnomaliesWithNASupport(rilevazioni, threshold, nMeasurement);
+                        CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es3.csv"));
+                        Console.WriteLine($"Anomalies written.");
                         break;
                 }
 
-                CSVWriterService.WriteAnomalies(anomalies, outputFilePath);
-                Console.WriteLine($"Anomalies written to {outputFilePath}");
+                
             }
             else
             {
