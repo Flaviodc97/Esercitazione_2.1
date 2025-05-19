@@ -21,7 +21,7 @@ This application detects anomalies in a set of GPS-based degradation measurement
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 1. **Place input file**:
    - Make sure the file `example.csv` is located in the `src` directory.
