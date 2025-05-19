@@ -43,7 +43,7 @@ public class Program
                 switch (choice)
                 {
                     case "1":
-                        anomalies = AnomalyDetectionService.FindAnomaly(rilevazioni, threshold);
+                        anomalies = AnomalyDetectionService.FindAnomalies(rilevazioni, threshold);
                         CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es1.csv"));
                         Console.WriteLine($"Anomalies written.");
                         break;
@@ -53,7 +53,7 @@ public class Program
                         {
                             Console.Write("Not a valid integer. Retry: ");
                         }
-                        anomalies = AnomalyDetectionService.MergeAnomaly(rilevazioni, threshold, nMeasurement);
+                        anomalies = AnomalyDetectionService.MergeAnomalies(rilevazioni, threshold, nMeasurement);
                         CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es2.csv"));
                         Console.WriteLine($"Anomalies written.");
                         break;

@@ -11,7 +11,7 @@ namespace Esercitazione_2._1.Tests
             new MonitoredLocation { Id = id, Latitude = lat, Longitude = lon, Degradation = degr };
         
         [Fact]
-        public void FindAnomaly_NoValuesAboveThreshold_ReturnsEmptyList()
+        public void FindAnomalies_NoValuesAboveThreshold_ReturnsEmptyList()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -20,27 +20,27 @@ namespace Esercitazione_2._1.Tests
                 Loc(3, "N 0°0'0\"", "E 0°0'2\"", -2.9),
 
             };
-            var result = AnomalyDetectionService.FindAnomaly(locations, 3.0);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 3.0);
             Assert.Empty(result);
 
         }
 
         [Fact]
-        public void FindAnomaly_SingleValueAboveThreshold_ReturnsSingleAnomaly()
+        public void FindAnomalies_SingleValueAboveThreshold_ReturnsSingleAnomaly()
         {
             var location = new List<MonitoredLocation>
             {
                 Loc(1, "N 0°0'0\"", "E 0°0'0\"", 4.5)
             };
 
-            var result = AnomalyDetectionService.FindAnomaly(location, 3);
+            var result = AnomalyDetectionService.FindAnomalies(location, 3);
             Assert.Single(result);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(1, result[0].EndId);
         }
 
         [Fact]
-        public void FindAnomaly_MultipleValuesAboveThreshold_ReturnsAnomaliesList()
+        public void FindAnomalies_MultipleValuesAboveThreshold_ReturnsAnomaliesList()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -48,26 +48,26 @@ namespace Esercitazione_2._1.Tests
                 Loc(2, "N 0°0'0\"", "E 0°0'1\"", 2.0),
                 Loc(3, "N 0°0'0\"", "E 0°0'2\"", -2.9)
             };
-            var result = AnomalyDetectionService.FindAnomaly(locations, 1.5);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 1.5);
             Assert.Equal(1, result.Count);
         }
 
         [Fact]
-        public void FindAnomaly_MissingCoordinates_SetsLengthZeroAndLinearDistanceNA()
+        public void FindAnomalies_MissingCoordinates_SetsLengthZeroAndLinearDistanceNA()
         {
             var locations = new List<MonitoredLocation>
             {
                 Loc(1, "NA", "NA", 3.0),
                 Loc(2, "NA", "NA", 5.0),
             };
-            var result = AnomalyDetectionService.FindAnomaly(locations, 2);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 2);
             Assert.Equal("0.0000", result[0].Length);
             Assert.Equal("NA", result[0].LinearDistance);
 
         }
 
         [Fact]
-        public void FindAnomaly_MixedAnomaliesWithNormalValues_ReturnsCorrectAnomalyCount()
+        public void FindAnomalies_MixedAnomaliesWithNormalValues_ReturnsCorrectAnomalyCount()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -78,12 +78,12 @@ namespace Esercitazione_2._1.Tests
                 Loc(5, "N 0°0'4\"", "E 0°0'4\"", 7.0)
             };
 
-            var result = AnomalyDetectionService.FindAnomaly(locations, 3.0);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 3.0);
             Assert.Equal(3, result.Count);
         }
 
         [Fact]
-        public void FindAnomaly_MultipleAnomalies_SetsCorrectMaxIdAndMaxValue()
+        public void FindAnomalies_MultipleAnomalies_SetsCorrectMaxIdAndMaxValue()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -91,28 +91,28 @@ namespace Esercitazione_2._1.Tests
                 Loc(2, "N 0°0'2\"", "E 0°0'2\"", 6.0),
                 Loc(3, "N 0°0'4\"", "E 0°0'4\"", 7.0)
             };
-            var result = AnomalyDetectionService.FindAnomaly(locations, 3);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 3);
             Assert.Equal(1, result[0].MaxId);
             Assert.Equal(8.0, result[0].MaxValore);
                 
         }
 
         [Fact]
-        public void FindAnomaly_ContiguousAnomalies_SetsCorrectLength()
+        public void FindAnomalies_ContiguousAnomalies_SetsCorrectLength()
         {
             var locations = new List<MonitoredLocation>
             {
                 Loc(13,"N 45°29'12.0859\"","E 9°12'19.0606\"",-4.9338),
                 Loc(14, "N 45°29'12.0996\"", "E 9°12'19.0675\"", 6.1497)
             };
-            var result = AnomalyDetectionService.FindAnomaly(locations, 3);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 3);
             Assert.Equal("0.8975", result[0].Length);
             
         }
 
 
         [Fact]
-        public void FindAnomaly_ValidLocations_SetsCorrectLinearDistance()
+        public void FindAnomalies_ValidLocations_SetsCorrectLinearDistance()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -123,12 +123,12 @@ namespace Esercitazione_2._1.Tests
                 Loc(18, "N 45°29'12.1271\"", "E 9°12'19.0915\"", 9.7715),
                 Loc(19, "N 45°29'12.1271\"", "E 9°12'19.0984\"", 4.0511)
             };
-            var result = AnomalyDetectionService.FindAnomaly(locations, 3);
+            var result = AnomalyDetectionService.FindAnomalies(locations, 3);
             Assert.Equal("1.5131", result[0].LinearDistance);
         }
 
         [Fact]
-        public void MergeAnomaly_NoValuesAboveThreshold_ReturnsEmptyList()
+        public void MergeAnomalies_NoValuesAboveThreshold_ReturnsEmptyList()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -136,26 +136,26 @@ namespace Esercitazione_2._1.Tests
                 Loc(2, "N 0°0'0\"", "E 0°0'1\"", 2.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 1);
             Assert.Empty(result);
         }
 
         [Fact]
-        public void MergeAnomaly_SingleAnomaly_ReturnsCorrectAnomaly()
+        public void MergeAnomalies_SingleAnomaly_ReturnsCorrectAnomaly()
         {
             var locations = new List<MonitoredLocation>
             {
                 Loc(1, "N 0°0'0\"", "E 0°0'0\"", 4.5)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 1);
             Assert.Single(result);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(1, result[0].EndId);
         }
 
         [Fact]
-        public void MergeAnomaly_InterruptionBelowThresholdWithinTolerance_ReturnsSingleMergedAnomaly()
+        public void MergeAnomalies_InterruptionBelowThresholdWithinTolerance_ReturnsSingleMergedAnomaly()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -164,14 +164,14 @@ namespace Esercitazione_2._1.Tests
                 Loc(3, "N 0°0'2\"", "E 0°0'2\"", 5.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 2);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 2);
             Assert.Single(result);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(3, result[0].EndId);
         }
 
         [Fact]
-        public void MergeAnomaly_TooManyNormalValues_SplitsIntoTwoAnomalies()
+        public void MergeAnomalies_TooManyNormalValues_SplitsIntoTwoAnomalies()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -181,7 +181,7 @@ namespace Esercitazione_2._1.Tests
                 Loc(4, "N 0°0'3\"", "E 0°0'3\"", 6.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 1);
             Assert.Equal(2, result.Count);
             Assert.Equal(1, result[0].FirstId);
             Assert.Equal(1, result[0].EndId);
@@ -190,7 +190,7 @@ namespace Esercitazione_2._1.Tests
         }
 
         [Fact]
-        public void MergeAnomaly_MissingCoordinates_SetsLengthZeroAndLinearDistanceNA()
+        public void MergeAnomalies_MissingCoordinates_SetsLengthZeroAndLinearDistanceNA()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -198,14 +198,14 @@ namespace Esercitazione_2._1.Tests
                 Loc(2, "NA", "NA", 5.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 2.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 2.0, 1);
             Assert.Single(result);
             Assert.Equal("0.0000", result[0].Length);
             Assert.Equal("NA", result[0].LinearDistance);
         }
 
         [Fact]
-        public void MergeAnomaly_MaxValuesAreCorrectlyTracked()
+        public void MergeAnomalies_MaxValuesAreCorrectlyTracked()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -214,14 +214,14 @@ namespace Esercitazione_2._1.Tests
                 Loc(3, "N 0°0'2\"", "E 0°0'2\"", 6.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 1);
             Assert.Single(result);
             Assert.Equal(2, result[0].MaxId);
             Assert.Equal(7.0, result[0].MaxValore);
         }
 
         [Fact]
-        public void MergeAnomaly_ContiguousAnomalies_ComputesCorrectLength()
+        public void MergeAnomalies_ContiguousAnomalies_ComputesCorrectLength()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -229,12 +229,12 @@ namespace Esercitazione_2._1.Tests
                 Loc(14, "N 45°29'12.0996\"", "E 9°12'19.0675\"", 6.1)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 1);
             Assert.Equal("0.8975", result[0].Length);
         }
 
         [Fact]
-        public void MergeAnomaly_ValidLocations_SetsCorrectLinearDistance()
+        public void MergeAnomalies_ValidLocations_SetsCorrectLinearDistance()
         {
             var locations = new List<MonitoredLocation>
             {
@@ -246,7 +246,7 @@ namespace Esercitazione_2._1.Tests
                 Loc(19, "N 45°29'12.1271\"", "E 9°12'19.0984\"", 4.0)
             };
 
-            var result = AnomalyDetectionService.MergeAnomaly(locations, 3.0, 1);
+            var result = AnomalyDetectionService.MergeAnomalies(locations, 3.0, 1);
             Assert.Equal("1.5131", result[0].LinearDistance);
         }
 

@@ -259,7 +259,19 @@ var riskHotspots = [
       { "value": 28, "exceeded": true },
     ]},
   {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomalies(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomalies(...)", "fileIndex": 0, "line": 119,
+    "metrics": [
+      { "value": 28, "exceeded": false },
+      { "value": 28, "exceeded": true },
+    ]},
+  {
     "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomaly(...)", "fileIndex": 0, "line": 15,
+    "metrics": [
+      { "value": 24, "exceeded": false },
+      { "value": 24, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomalies(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomalies(...)", "fileIndex": 0, "line": 15,
     "metrics": [
       { "value": 24, "exceeded": false },
       { "value": 24, "exceeded": true },

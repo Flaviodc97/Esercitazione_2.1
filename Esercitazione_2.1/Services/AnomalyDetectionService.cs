@@ -11,7 +11,7 @@ namespace Esercitazione_2._1.Services
 {
     public class AnomalyDetectionService
     {
-        public static List<Anomaly> FindAnomaly(List<MonitoredLocation> measurements, double threshold)
+        public static List<Anomaly> FindAnomalies(List<MonitoredLocation> measurements, double threshold)
         {
             int firstId = 0, maxId = 0;           
             double maxDeg = 0, length = 0;
@@ -115,7 +115,7 @@ namespace Esercitazione_2._1.Services
             return anomalies;
 
         }
-        public static List<Anomaly> MergeAnomaly(List<MonitoredLocation> measurements,double threshold, int nMeasurements) 
+        public static List<Anomaly> MergeAnomalies(List<MonitoredLocation> measurements,double threshold, int nMeasurements) 
         {
             int firstId = 0, maxId = 0;
             double maxDeg = 0, length = 0;
