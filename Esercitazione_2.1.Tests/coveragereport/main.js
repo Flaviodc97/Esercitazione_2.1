@@ -219,7 +219,7 @@ var assemblies = [
       { "name": "Esercitazione_2._1.Services.AnomalyDetectionService", "rp": "Esercitazione_2.1_AnomalyDetectionService.html", "cl": 398, "ucl": 0, "cal": 398, "tl": 420, "cb": 242, "tb": 288, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.CsvReaderService", "rp": "Esercitazione_2.1_CsvReaderService.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 53, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.CSVWriterService", "rp": "Esercitazione_2.1_CSVWriterService.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 52, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Esercitazione_2._1.Services.GeoService", "rp": "Esercitazione_2.1_GeoService.html", "cl": 22, "ucl": 3, "cal": 25, "tl": 50, "cb": 6, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Esercitazione_2._1.Services.GeoService", "rp": "Esercitazione_2.1_GeoService.html", "cl": 22, "ucl": 3, "cal": 25, "tl": 51, "cb": 6, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "Esercitazione_2.1_Program.html", "cl": 0, "ucl": 50, "cal": 50, "tl": 81, "cb": 0, "tb": 22, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];

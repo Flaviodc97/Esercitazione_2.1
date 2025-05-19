@@ -44,3 +44,21 @@ This application detects anomalies in a set of GPS-based degradation measurement
      - `anomalie_Es1.csv`
      - `anomalie_Es2.csv`
      - `anomalie_Es3.csv`
+	 
+	 
+## How to Run Tests and CodeCoverage
+
+1. **Run All the test**:
+   - On Visual Studio -> Test -> Run All the Tests.
+
+2. **Run Commands on Terminal**:
+	 - Execute via Visual Studio,or command line:
+     ```bash
+     dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+     ```
+	 
+	 ```bash
+     reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coveragereport
+     ```
+3. **Open Esercitazione_2.1/Esercitazione_2.1.Tests/coveragereport/Esercitazione_2.1_AnomalyDetectionService.html **
+	- To Observe the Results open this file on a Browser.
