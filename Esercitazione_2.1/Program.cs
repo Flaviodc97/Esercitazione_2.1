@@ -23,13 +23,14 @@ public class Program
             Console.WriteLine("1 - FindAnomaly - Es1");
             Console.WriteLine("2 - MergeAnomaly - Es2");
             Console.WriteLine("3 - MergeAnomaliesWithNASupport -Es4");
+            Console.WriteLine("4 - MergeAnomaliesParallel -Es6");
             Console.WriteLine("Any Other Key - Quit");
             Console.Write("Choice (1/2/3): ");
 
             string choice = Console.ReadLine();
 
 
-            if (choice == "1" || choice == "2" || choice == "3")
+            if (choice == "1" || choice == "2" || choice == "3" || choice == "4")
             {
                 Console.WriteLine("Insert a Threshold value");
                 while (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out threshold))
@@ -64,7 +65,17 @@ public class Program
                             Console.Write("Not a valid integer. Retry: ");
                         }
                         anomalies = AnomalyDetectionService.MergeAnomaliesWithNASupport(rilevazioni, threshold, nMeasurement);
-                        CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es3.csv"));
+                        CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es4.csv"));
+                        Console.WriteLine($"Anomalies written.");
+                        break;
+                    case "4":
+                        Console.WriteLine("Insert a Merge tolerance value");
+                        while (!int.TryParse(Console.ReadLine(), NumberStyles.Integer, CultureInfo.InvariantCulture, out nMeasurement))
+                        {
+                            Console.Write("Not a valid integer. Retry: ");
+                        }
+                        anomalies = AnomalyDetectionService.MergeAnomalies(rilevazioni, threshold, nMeasurement);
+                        CSVWriterService.WriteAnomalies(anomalies, outputFilePath.Replace(".csv", "_Es6.csv"));
                         Console.WriteLine($"Anomalies written.");
                         break;
                 }

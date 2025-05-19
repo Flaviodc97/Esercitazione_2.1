@@ -216,11 +216,11 @@ var assemblies = [
       { "name": "Esercitazione_2._1.Models.Anomaly", "rp": "Esercitazione_2.1_Anomaly.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Models.Coordinate", "rp": "Esercitazione_2.1_Coordinate.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 14, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Models.MonitoredLocation", "rp": "Esercitazione_2.1_MonitoredLocation.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Esercitazione_2._1.Services.AnomalyDetectionService", "rp": "Esercitazione_2.1_AnomalyDetectionService.html", "cl": 322, "ucl": 8, "cal": 330, "tl": 420, "cb": 99, "tb": 114, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Esercitazione_2._1.Services.AnomalyDetectionService", "rp": "Esercitazione_2.1_AnomalyDetectionService.html", "cl": 425, "ucl": 8, "cal": 433, "tl": 527, "cb": 123, "tb": 140, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.CsvReaderService", "rp": "Esercitazione_2.1_CsvReaderService.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 53, "cb": 0, "tb": 10, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.CSVWriterService", "rp": "Esercitazione_2.1_CSVWriterService.html", "cl": 0, "ucl": 34, "cal": 34, "tl": 52, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Esercitazione_2._1.Services.GeoService", "rp": "Esercitazione_2.1_GeoService.html", "cl": 22, "ucl": 3, "cal": 25, "tl": 51, "cb": 6, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Program", "rp": "Esercitazione_2.1_Program.html", "cl": 0, "ucl": 52, "cal": 52, "tl": 81, "cb": 0, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "Esercitazione_2.1_Program.html", "cl": 0, "ucl": 69, "cal": 69, "tl": 92, "cb": 0, "tb": 44, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -253,25 +253,31 @@ var riskHotspots = [
       { "value": 62, "exceeded": true },
     ]},
   {
-    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaly(...)", "fileIndex": 0, "line": 119,
-    "metrics": [
-      { "value": 28, "exceeded": false },
-      { "value": 28, "exceeded": true },
-    ]},
-  {
     "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomalies(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomalies(...)", "fileIndex": 0, "line": 119,
     "metrics": [
       { "value": 28, "exceeded": false },
       { "value": 28, "exceeded": true },
     ]},
   {
-    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomaly(...)", "fileIndex": 0, "line": 15,
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaly(...)", "fileIndex": 0, "line": 119,
+    "metrics": [
+      { "value": 28, "exceeded": false },
+      { "value": 28, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "MergeAnomaliesParallel(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double,System.Int32)", "methodShortName": "MergeAnomaliesParallel(...)", "fileIndex": 0, "line": 420,
+    "metrics": [
+      { "value": 26, "exceeded": false },
+      { "value": 26, "exceeded": true },
+    ]},
+  {
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomalies(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomalies(...)", "fileIndex": 0, "line": 15,
     "metrics": [
       { "value": 24, "exceeded": false },
       { "value": 24, "exceeded": true },
     ]},
   {
-    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomalies(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomalies(...)", "fileIndex": 0, "line": 15,
+    "assembly": "Esercitazione_2.1", "class": "Esercitazione_2._1.Services.AnomalyDetectionService", "reportPath": "Esercitazione_2.1_AnomalyDetectionService.html", "methodName": "FindAnomaly(System.Collections.Generic.List`1<Esercitazione_2._1.Models.MonitoredLocation>,System.Double)", "methodShortName": "FindAnomaly(...)", "fileIndex": 0, "line": 15,
     "metrics": [
       { "value": 24, "exceeded": false },
       { "value": 24, "exceeded": true },

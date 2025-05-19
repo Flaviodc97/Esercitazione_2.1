@@ -416,5 +416,112 @@ namespace Esercitazione_2._1.Services
             }
             return anomalies;
         }
+        public static List<Anomaly> MergeAnomaliesParallel(List<MonitoredLocation> measurements, double threshold, int nMeasurements)
+        {
+            int firstId = 0, maxId = 0;
+            double maxDeg = 0, length = 0;
+            int nDeg = 0;
+            int nNormalMeasurements = 0;
+            string startLat = null, startLon = null;
+            List<Coordinate> listDif = new List<Coordinate>();
+            var anomalies = new List<Anomaly>();
+
+            Parallel.For(0, measurements.Count, i =>
+            {
+                if (Math.Abs(measurements[i].Degradation) > threshold)
+                {
+                    //Reset if we find a degradation value > threshold
+                    nNormalMeasurements = 0;
+                    if (firstId == 0)
+                    {
+                        firstId = measurements[i].Id;
+                        startLat = measurements[i].Latitude;
+                        startLon = measurements[i].Longitude;
+                        maxId = measurements[i].Id;
+                        maxDeg = measurements[i].Degradation;
+
+                    }
+                    if (maxDeg < measurements[i].Degradation)
+                    {
+                        maxDeg = measurements[i].Degradation;
+                        maxId = measurements[i].Id;
+                    }
+
+                    nDeg++;
+                    listDif.Add(new Coordinate { Latitude = measurements[i].Latitude, Longitude = measurements[i].Longitude });
+
+                    if (nDeg >= 2)
+                    {
+                        if (listDif[^2].Latitude.Contains("NA") || listDif[^1].Latitude.Contains("NA"))
+                            length += 0;
+                        else
+                            length += GeoService.DistanceCalculation(GeoService.DMSToDecimal(listDif[^2].Latitude), GeoService.DMSToDecimal(listDif[^2].Longitude), GeoService.DMSToDecimal(listDif[^1].Latitude), GeoService.DMSToDecimal(listDif[^1].Longitude));
+                    }
+                }
+                else
+                {
+
+
+                    if (firstId != 0)
+                    {
+                        nNormalMeasurements++;
+                        //Check if the number of "normal" measurements exceeds the allowed threshold
+                        if (nNormalMeasurements >= nMeasurements || i == (measurements.Count - 1))
+                        {
+                            var lastRilevation = measurements[i - nNormalMeasurements];
+                            var distanza = GeoService.DistanceCalculation(GeoService.DMSToDecimal(startLat), GeoService.DMSToDecimal(startLon), GeoService.DMSToDecimal(lastRilevation.Latitude), GeoService.DMSToDecimal(lastRilevation.Longitude));
+                            var anomalia = new Anomaly()
+                            {
+                                FirstId = firstId,
+                                FirstLat = startLat,
+                                FirstLon = startLon,
+                                EndId = lastRilevation.Id,
+                                EndLat = lastRilevation.Latitude,
+                                EndLon = lastRilevation.Longitude,
+                                MaxId = maxId,
+                                MaxValore = maxDeg,
+                                Length = double.IsNaN(length) ? "NA" : (length * nDeg).ToString("F4", CultureInfo.InvariantCulture),
+                                LinearDistance = double.IsNaN(distanza) ? "NA" : distanza.ToString("F4", CultureInfo.InvariantCulture)
+                            };
+                            anomalies.Add(anomalia);
+
+                            //Reset values
+                            firstId = 0;
+                            startLat = null;
+                            startLon = null;
+                            maxId = 0;
+                            maxDeg = 0;
+                            length = 0;
+                            nDeg = 0;
+                            listDif.Clear();
+                            nNormalMeasurements = 0;
+                        }
+
+                    }
+                }
+            });
+
+            //End of the measurements list
+            if (firstId != 0)
+            {
+                var fine = measurements[^1];
+                var distanza = GeoService.DistanceCalculation(GeoService.DMSToDecimal(startLat), GeoService.DMSToDecimal(startLon), GeoService.DMSToDecimal(fine.Latitude), GeoService.DMSToDecimal(fine.Longitude));
+                var anomalia = new Anomaly
+                {
+                    FirstId = firstId,
+                    EndId = fine.Id,
+                    FirstLat = startLat,
+                    FirstLon = startLon,
+                    EndLat = fine.Latitude,
+                    EndLon = fine.Longitude,
+                    MaxId = maxId,
+                    MaxValore = maxDeg,
+                    Length = (length * nDeg).ToString("F4", CultureInfo.InvariantCulture),
+                    LinearDistance = double.IsNaN(distanza) ? "NA" : distanza.ToString("F4", CultureInfo.InvariantCulture)
+                };
+                anomalies.Add(anomalia);
+            }
+            return anomalies;
+        }
     }
 }

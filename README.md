@@ -13,6 +13,7 @@ This application detects anomalies in a set of GPS-based degradation measurement
 		- `FindAnomalies`: Detects anomalies where degradation exceeds a given threshold.
 		- `MergeAnomalies`: Detects and merges consecutive anomalies, allowing interruptions with normal values (under a configurable tolerance).
 		- `MergeAnomaliesWithNASupport`: Similar to MergeAnomaly, but includes logic to handle missing ("NA") coordinates.
+		- `MergeAnomaliesParallel`: Detects and merges consecutive anomalies, allowing interruptions with normal values (under a configurable tolerance) Parallel.
 - `Services/CsvReaderService.cs`: Loads mesurements data from a CSV file.
 - `Services/CSVWriterService.cs`: Writes detected anomalies to a new CSV file.
 - `Services/GeoService`: Contains Geo Logic for Geographycal calculation.
@@ -24,7 +25,7 @@ This application detects anomalies in a set of GPS-based degradation measurement
 ## How to Run
 
 1. **Place input file**:
-   - Make sure the file `example.csv` is located in the `src` directory.
+   - Make sure the file `example.csv` is located in the `Esercitazione_2.1\Esercitazione_2.1\bin\Debug\net8.0\src` directory  .
 
 2. **Run the program**:
    - Execute via Visual Studio, Rider, or command line:
@@ -37,13 +38,15 @@ This application detects anomalies in a set of GPS-based degradation measurement
      - `1` – Basic anomaly detection (`FindAnomalies`)
      - `2` – Merging anomalies with tolerance (`MergeAnomalies`)
      - `3` – Merging with NA handling (`MergeAnomaliesWithNASupport`)
+	 - `3` – Merging anomalies with tolerance with Parallel (`MergeAnomaliesParallel`)
    - You’ll also be asked for a threshold (and a tolerance value if needed).
 
 4. **Output**:
    - Results will be saved in the `src` directory under:
      - `anomalie_Es1.csv`
      - `anomalie_Es2.csv`
-     - `anomalie_Es3.csv`
+     - `anomalie_Es4.csv`
+	 - `anomalie_Es6.csv`
 	 
 	 
 ## How to Run Tests and CodeCoverage
