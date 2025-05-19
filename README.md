@@ -52,13 +52,13 @@ This application detects anomalies in a set of GPS-based degradation measurement
    - On Visual Studio -> Test -> Run All the Tests.
 
 2. **Run Commands on Terminal**:
-	 - Execute via Visual Studio,or command line:
+	 - Execute via Visual Studio,or command line path: ..\Esercitazione_2.1\Esercitazione_2.1.Tests> :
      ```bash
-     dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+     dotnet test --collect:"XPlat Code Coverage"
      ```
 	 
 	 ```bash
-     reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coveragereport
+     reportgenerator -reports:"TestResults/**/coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:Html
      ```
 3. **Open Esercitazione_2.1/Esercitazione_2.1.Tests/coveragereport/Esercitazione_2.1_AnomalyDetectionService.html**:
 	- To Observe the Results open this file on a Browser.
