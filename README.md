@@ -60,5 +60,5 @@ This application detects anomalies in a set of GPS-based degradation measurement
 	 ```bash
      reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coveragereport
      ```
-3. **Open Esercitazione_2.1/Esercitazione_2.1.Tests/coveragereport/Esercitazione_2.1_AnomalyDetectionService.html **
+3. **Open Esercitazione_2.1/Esercitazione_2.1.Tests/coveragereport/Esercitazione_2.1_AnomalyDetectionService.html**:
 	- To Observe the Results open this file on a Browser.
